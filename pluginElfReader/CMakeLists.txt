@@ -18,16 +18,18 @@ if (WIN32)
     )
 else()
     set(BUILD_SHARED_LIBS ON)
-    add_subdirectory(dwarves)
+    add_subdirectory(elf2var/dwarves)
     add_library(${PLUGIN_NAME} SHARED
         ${PATH_INTERFACE}/varreaderinterface.h
         elfreader.h elfreader.cpp
         elf2var/elf2var.h
         elf2var/elf2var.c
+        elf2var/varcommon/varcommon.c
+        elf2var/varcommon/varcommon.h
     )
 endif()
 
-target_include_directories(${PLUGIN_NAME} PRIVATE dwarves)
+target_include_directories(${PLUGIN_NAME} PRIVATE elf2var/dwarves elf2var)
 if (UNIX)
     target_link_libraries(${PLUGIN_NAME} PRIVATE dwarves)
 endif()

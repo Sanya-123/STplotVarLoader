@@ -1,6 +1,6 @@
 #include "elfreader.h"
 #ifndef Q_OS_WINDOWS
-#include "varloc.h"
+#include "elf2var.h"
 #endif
 
 ElfReader::ElfReader(QObject *parent) : QObject(parent)
