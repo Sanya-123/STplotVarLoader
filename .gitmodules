@@ -1,0 +1,3 @@
+[submodule "pluginElfReader/elf2var"]
+	path = pluginElfReader/elf2var
+	url = git@gitlab2.pekauto.com:development/firmware/tools/libs/elf2var.git
