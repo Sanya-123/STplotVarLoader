@@ -9,9 +9,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(BUILD_SHARED_LIBS ON)
-add_subdirectory(dwarves)
-
 
 # BEGIN PLUGIN
 if (WIN32)
@@ -20,6 +17,8 @@ if (WIN32)
         elfreader.h elfreader.cpp
     )
 else()
+    set(BUILD_SHARED_LIBS ON)
+    add_subdirectory(dwarves)
     add_library(${PLUGIN_NAME} SHARED
         ${PATH_INTERFACE}/varreaderinterface.h
         elfreader.h elfreader.cpp
