@@ -1,0 +1,3 @@
+[submodule "pluginElfReader/varloc/dwarves"]
+	path = pluginElfReader/varloc/dwarves
+	url = https://github.com/acmel/dwarves.git
