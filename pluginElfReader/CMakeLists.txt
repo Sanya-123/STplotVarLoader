@@ -20,7 +20,6 @@ if (WIN32)
         elfreader.h elfreader.cpp
     )
 else()
-    add_subdirectory(varloc)
     add_library(${PLUGIN_NAME} SHARED
         ${PATH_INTERFACE}/varreaderinterface.h
         elfreader.h elfreader.cpp
