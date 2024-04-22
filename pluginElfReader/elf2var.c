@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "dwarves.h"
-#include "varloc.h"
+#include "elf2var.h"
 
 
 varloc_node_t* last_var_node = NULL;

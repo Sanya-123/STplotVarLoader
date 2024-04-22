@@ -22,8 +22,8 @@ else()
     add_library(${PLUGIN_NAME} SHARED
         ${PATH_INTERFACE}/varreaderinterface.h
         elfreader.h elfreader.cpp
-        varloc.h
-        varloc.c
+        elf2var.h
+        elf2var.c
     )
 endif()
 

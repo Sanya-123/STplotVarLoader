@@ -1,13 +1,13 @@
 /**
  ******************************************************************************
- * @file    varloc.h
+ * @file    elf2var.h
  * @author  kasper
  * @date    2023-Jul-13
  * @brief   Description
  ******************************************************************************
  */
-#ifndef INC_VARLOC_H_
-#define INC_VARLOC_H_
+#ifndef INC_ELF2VAR_H_
+#define INC_ELF2VAR_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,4 +29,4 @@ varloc_node_t*  varloc_open_elf(char* file);
 }
 #endif
 
-#endif /* INC_VARLOC_H_ */
+#endif /* INC_ELF2VAR_H_ */
