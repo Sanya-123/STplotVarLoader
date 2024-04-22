@@ -9,6 +9,9 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(BUILD_SHARED_LIBS ON)
+add_subdirectory(dwarves)
+
 
 # BEGIN PLUGIN
 if (WIN32)
@@ -21,12 +24,12 @@ else()
     add_library(${PLUGIN_NAME} SHARED
         ${PATH_INTERFACE}/varreaderinterface.h
         elfreader.h elfreader.cpp
-        varloc/varloc.h
-        varloc/varloc.c
+        varloc.h
+        varloc.c
     )
 endif()
 
-target_include_directories(${PLUGIN_NAME} PRIVATE varloc/dwarves varloc)
+target_include_directories(${PLUGIN_NAME} PRIVATE dwarves)
 if (UNIX)
     target_link_libraries(${PLUGIN_NAME} PRIVATE dwarves)
 endif()
@@ -40,3 +43,4 @@ if (WIN32)
 endif()
 
 # END PLUGIN
+
