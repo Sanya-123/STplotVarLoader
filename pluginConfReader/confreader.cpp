@@ -1,18 +1,13 @@
-#include "elfreader.h"
-#ifndef Q_OS_WINDOWS
-#include "elf2var.h"
-#endif
+#include "confreader.h"
+#include "conf2var.h"
 
-ElfReader::ElfReader(QObject *parent) : QObject(parent)
+ConfReader::ConfReader(QObject *parent) : QObject(parent)
 {
     backendIp = "10.9.0.190";
 }
 
-varloc_node_t *ElfReader::readTree(QString fileName)
+varloc_node_t *ConfReader::readTree(QString fileName)
 {
-#ifndef Q_OS_WINDOWS
-    return varloc_open_elf(fileName.toLocal8Bit().data());
-#else
     QNetworkAccessManager manager;
     QString filePath = fileName;
     QFileInfo fileInfo(fileName);
@@ -127,6 +122,8 @@ varloc_node_t *ElfReader::readTree(QString fileName)
                     file.write(data);
                     file.close();
                     qDebug() << "File downloaded successfully";
+                    varloc_node_t* node = conf2var(filePath.toLocal8Bit().data());
+                    return node;
                 }
                 else
                 {
@@ -143,15 +140,14 @@ varloc_node_t *ElfReader::readTree(QString fileName)
 
     reply_upl->deleteLater();
     return nullptr;
-#endif
 }
 
-QString ElfReader::getBackendIp() const
+QString ConfReader::getBackendIp() const
 {
     return backendIp;
 }
 
-void ElfReader::setBackendIp(const QString &newBackendIp)
+void ConfReader::setBackendIp(const QString &newBackendIp)
 {
     backendIp = newBackendIp;
 }
