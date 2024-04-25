@@ -25,6 +25,9 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 #     add_subdirectory(${subdir})
 # endforeach()
 
+set(BUILD_SHARED_LIBS ON)
+add_subdirectory(conf2var/)
+
 if(WIN32)
     add_subdirectory(pluginElfConverter/)
 else()

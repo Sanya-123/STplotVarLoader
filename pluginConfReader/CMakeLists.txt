@@ -17,12 +17,12 @@ add_library(${PLUGIN_NAME} SHARED
     confreader.h confreader.cpp
 )
 
-set(BUILD_SHARED_LIBS ON)
-add_subdirectory(conf2var)
+# set(BUILD_SHARED_LIBS ON)
+# add_subdirectory(conf2var)
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE conf2var Qt5::Core)
 
-target_include_directories(${PLUGIN_NAME} PRIVATE conf2var)
+target_include_directories(${PLUGIN_NAME} PRIVATE ../conf2var)
 
 set_target_properties(${PLUGIN_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PLUGINS_PATH}
