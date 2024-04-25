@@ -4,3 +4,6 @@
 [submodule "pluginElfConverter/conf2var"]
 	path = pluginElfConverter/conf2var
 	url = git@gitlab2.pekauto.com:development/firmware/tools/libs/conf2var.git
+[submodule "pluginConfReader/conf2var"]
+	path = pluginConfReader/conf2var
+	url = git@gitlab2.pekauto.com:development/firmware/tools/libs/conf2var.git

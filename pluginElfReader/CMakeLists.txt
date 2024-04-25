@@ -9,7 +9,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Core Network REQUIRED)
+find_package(Qt5 COMPONENTS Core REQUIRED)
 
 # BEGIN PLUGIN
 if (WIN32)
@@ -39,7 +39,7 @@ set_target_properties(${PLUGIN_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PLUGINS_PATH}
 )
 
-target_link_libraries(${PLUGIN_NAME} PRIVATE Qt5::Core Qt5::Network)
+target_link_libraries(${PLUGIN_NAME} PRIVATE Qt5::Core)
 
 if (WIN32)
     install(TARGETS ${PLUGIN_NAME} DESTINATION ${PLUGINS_PATH})
