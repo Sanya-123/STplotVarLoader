@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 # create plugin and app
-set(PLUGIN_NAME pluginConfReader)
+set(PLUGIN_NAME pluginElfConverter)
 
 project(${PLUGIN_NAME} LANGUAGES CXX)
 
@@ -14,9 +14,10 @@ find_package(Qt5 COMPONENTS Core Network REQUIRED)
 # BEGIN PLUGIN
 add_library(${PLUGIN_NAME} SHARED
 	${PATH_INTERFACE}/varreaderinterface.h
-	confreader.h confreader.cpp
+        elfconverter.h elfconverter.cpp
 )
 
+set(BUILD_SHARED_LIBS ON)
 add_subdirectory(conf2var)
 
 target_include_directories(${PLUGIN_NAME} PRIVATE conf2var)
@@ -27,9 +28,9 @@ set_target_properties(${PLUGIN_NAME} PROPERTIES
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE Qt5::Core Qt5::Network conf2var)
 
-# if (WIN32)
-#     install(TARGETS ${PLUGIN_NAME} DESTINATION ${PLUGINS_PATH})
-# endif()
+if (WIN32)
+    install(TARGETS ${PLUGIN_NAME} DESTINATION ${PLUGINS_PATH})
+endif()
 
 # END PLUGIN
 

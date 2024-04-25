@@ -1,12 +1,12 @@
-#include "confreader.h"
+#include "elfconverter.h"
 #include "conf2var.h"
 
-ConfReader::ConfReader(QObject *parent) : QObject(parent)
+ElfConverter::ElfConverter(QObject *parent) : QObject(parent)
 {
     backendIp = "10.9.0.190";
 }
 
-varloc_node_t *ConfReader::readTree(QString fileName)
+varloc_node_t *ElfConverter::readTree(QString fileName)
 {
     QNetworkAccessManager manager;
     QString filePath = fileName;
@@ -142,12 +142,12 @@ varloc_node_t *ConfReader::readTree(QString fileName)
     return nullptr;
 }
 
-QString ConfReader::getBackendIp() const
+QString ElfConverter::getBackendIp() const
 {
     return backendIp;
 }
 
-void ConfReader::setBackendIp(const QString &newBackendIp)
+void ElfConverter::setBackendIp(const QString &newBackendIp)
 {
     backendIp = newBackendIp;
 }

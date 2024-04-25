@@ -1,5 +1,5 @@
-#ifndef ELFREADER_H
-#define ELFREADER_H
+#ifndef ELFCONVERTER_H
+#define ELFCONVERTER_H
 
 #include <QObject>
 #include <QNetworkAccessManager>
@@ -10,18 +10,18 @@
 #include <QTimer>
 #include "varreaderinterface.h"
 
-class ConfReader : public QObject, VarReadInterfacePlugin
+class ElfConverter : public QObject, VarReadInterfacePlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.S.debuger.ConfReader" FILE "pluginConfReader.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.S.debuger.ElfConverter" FILE "pluginElfConverter.json")
     Q_INTERFACES(VarReadInterfacePlugin)
 
 public:
-    explicit ConfReader(QObject *parent = nullptr);
+    explicit ElfConverter(QObject *parent = nullptr);
 
-    QString getName() { return QString("ELF file"); }
+    QString getName() { return QString("ELFCONF file"); }
 
-    QString getFileExtensions() {return QString("*.elf");}
+    QString getFileExtensions() {return QString("*.elfconf");}
 
     QIODevice::OpenModeFlag allowMode() {return QIODevice::ReadOnly;}
 
@@ -36,4 +36,4 @@ signals:
 
 };
 
-#endif // ELFREADER_H
+#endif // ELFCONVERTER_H
