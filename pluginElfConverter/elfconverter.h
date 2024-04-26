@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QHttpMultiPart>
 #include <QEventLoop>
+#include <QMessageBox>
 #include <QTimer>
 #include "varreaderinterface.h"
 
@@ -19,9 +20,9 @@ class ElfConverter : public QObject, VarReadInterfacePlugin
 public:
     explicit ElfConverter(QObject *parent = nullptr);
 
-    QString getName() { return QString("ELFCONF file"); }
+    QString getName() { return QString("ELF file"); }
 
-    QString getFileExtensions() {return QString("*.elfconf");}
+    QString getFileExtensions() {return QString("*.elf");}
 
     QIODevice::OpenModeFlag allowMode() {return QIODevice::ReadOnly;}
 
