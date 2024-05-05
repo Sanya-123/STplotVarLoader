@@ -20,7 +20,7 @@ class ElfConverter : public QObject, VarReadInterfacePlugin
 public:
     explicit ElfConverter(QObject *parent = nullptr);
 
-    QString getName() { return QString("ELF file"); }
+    QString getName() { return QString("server ELF file"); }
 
     QString getFileExtensions() {return QString("*.elf");}
 
@@ -29,8 +29,13 @@ public:
     varloc_node_t *readTree(QString fileName);
 
     int saveTree(varloc_node_t* tree, QString fileName) {return -1;}
+
+    unsigned int getPriority() {return 4;}
+
+private:
     QString getBackendIp() const;
     void setBackendIp(const QString &newBackendIp);
+
 private:
     QString backendIp;
 signals:

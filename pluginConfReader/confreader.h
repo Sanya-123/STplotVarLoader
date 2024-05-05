@@ -13,15 +13,17 @@ class ConfReader : public QObject, VarReadInterfacePlugin
 public:
     explicit ConfReader(QObject *parent = nullptr);
 
-    QString getName() { return QString("ELFCONF file"); }
+    QString getName() { return QString("conf file"); }
 
-    QString getFileExtensions() {return QString("*.elfconf");}
+    QString getFileExtensions() {return QString("*.conf");}
 
-    QIODevice::OpenModeFlag allowMode() {return QIODevice::ReadOnly;}
+    QIODevice::OpenModeFlag allowMode() {return QIODevice::ReadWrite;}
 
     varloc_node_t *readTree(QString fileName);
 
-    int saveTree(varloc_node_t* tree, QString fileName) {return -1;}
+    int saveTree(varloc_node_t* tree, QString fileName);
+
+    unsigned int getPriority() {return 3;}
 
 signals:
 

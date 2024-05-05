@@ -15,7 +15,7 @@ varloc_node_t *ElfConverter::readTree(QString fileName)
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly))
     {
-        qDebug() << "Failed to open file for reading:" << file.errorString();
+        qCritical() << "Failed to open file for reading:" << file.errorString();
         return nullptr;
     }
 
@@ -47,7 +47,7 @@ varloc_node_t *ElfConverter::readTree(QString fileName)
         // Timeout occurred, abort the request and handle the timeout
         timer.stop();
         QObject::disconnect(reply_upl, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-        qDebug() << "Request timed out";
+        qCritical() << "Request timed out";
         reply_upl->abort();
         QMessageBox::warning(0,"ElfConverter","Reqeust timed out");
         return nullptr;
@@ -56,7 +56,7 @@ varloc_node_t *ElfConverter::readTree(QString fileName)
     {
         timer.stop();
         if(reply_upl->error() > 0) {
-            qDebug() << "Network error:" << reply_upl->errorString();
+            qCritical() << "Network error:" << reply_upl->errorString();
             reply_upl->abort();
             QMessageBox::warning(0,"ElfConverter","Network error: "+reply_upl->errorString());
             return nullptr;
@@ -68,7 +68,7 @@ varloc_node_t *ElfConverter::readTree(QString fileName)
             }
             else
             {
-                qDebug() << "Request no success";
+                qCritical() << "Request no success";
                 reply_upl->abort();
                 QMessageBox::warning(0,"ElfConverter","Request no success");
                 return nullptr;
@@ -79,7 +79,7 @@ varloc_node_t *ElfConverter::readTree(QString fileName)
     // Check for errors
     if (reply_upl->error() != QNetworkReply::NoError)
     {
-        qDebug() << "Error:" << reply_upl->errorString();
+        qCritical() << "Error:" << reply_upl->errorString();
         QMessageBox::warning(0,"ElfConverter","Error: " + reply_upl->errorString());
     }
     else
@@ -107,7 +107,7 @@ varloc_node_t *ElfConverter::readTree(QString fileName)
         {
             // Timeout occurred, abort the request and handle the timeout
             timer.stop();
-            qDebug() << "Request timed out";
+            qCritical() << "Request timed out";
             QMessageBox::warning(0,"ElfConverter","Request timed out");
             reply_dnld->abort();
         }
@@ -132,13 +132,13 @@ varloc_node_t *ElfConverter::readTree(QString fileName)
                 }
                 else
                 {
-                    qDebug() << "Failed to open file for writing:" << file.errorString();
+                    qCritical() << "Failed to open file for writing:" << file.errorString();
                     QMessageBox::warning(0,"ElfConverter","Failed to open file for writing: " + file.errorString());
                 }
             }
             else
             {
-                qDebug() << "Download failed:" << reply_dnld->errorString();
+                qCritical() << "Download failed:" << reply_dnld->errorString();
                 QMessageBox::warning(0,"ElfConverter","Download failed: " + reply_dnld->errorString());
             }
         }
