@@ -16,6 +16,8 @@ add_library(${PLUGIN_NAME} SHARED
     ${PATH_INTERFACE}/varreaderinterface.h
     jsonreader.h jsonreader.cpp
     json2var/json2var.h json2var/json2var.c
+    json2var/varcommon/varcommon.c
+    json2var/varcommon/varcommon.h
 )
 
 # set(BUILD_SHARED_LIBS ON)

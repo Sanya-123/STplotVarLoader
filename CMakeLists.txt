@@ -25,9 +25,6 @@ subdirlist(SUBDIRS ${CMAKE_CURRENT_LIST_DIR})
 if(UNIX)
     list(REMOVE_ITEM SUBDIRS pluginElfConverter)
 endif()
-if(WIN32)
-    list(REMOVE_ITEM SUBDIRS pluginJsonReader)   #removed to fix windows pipeline build
-endif()
 
 foreach(subdir ${SUBDIRS})
     add_subdirectory(${subdir})
