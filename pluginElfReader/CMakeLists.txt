@@ -33,6 +33,9 @@ endif()
 target_include_directories(${PLUGIN_NAME} PRIVATE elf2var/dwarves elf2var)
 if (UNIX)
     target_link_libraries(${PLUGIN_NAME} PRIVATE dwarves )
+    set_target_properties(dwarves PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+    )
 endif()
 
 set_target_properties(${PLUGIN_NAME} PROPERTIES

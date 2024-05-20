@@ -32,6 +32,10 @@ set_target_properties(${PLUGIN_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PLUGINS_PATH}
 )
 
+set_target_properties(cjson PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+)
+
 if (WIN32)
     install(TARGETS ${PLUGIN_NAME} DESTINATION ${PLUGINS_PATH})
 endif()
