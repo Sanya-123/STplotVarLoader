@@ -1,9 +1,9 @@
 [submodule "pluginElfReader/elf2var"]
 	path = pluginElfReader/elf2var
-	url = git@gitlab2.pekauto.com:development/firmware/tools/libs/elf2var.git
+	url = https://github.com/Sanya-123/elf2var.git
 [submodule "conf2var"]
 	path = conf2var
-	url = git@gitlab2.pekauto.com:development/firmware/tools/libs/conf2var.git
+	url = https://github.com/Sanya-123/conf2var.git
 [submodule "pluginJsonReader/json2var"]
 	path = pluginJsonReader/json2var
-	url = git@gitlab2.pekauto.com:development/firmware/tools/libs/json2var.git
+	url = https://github.com/Sanya-123/json2var.git
